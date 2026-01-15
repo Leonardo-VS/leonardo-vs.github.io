@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones Globales en Seguridad Tecnológica Grupo DAF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #D32F2F;      /* Rojo corporativo */
+            --color-secondary: #FF6F00;    /* Naranja corporativo */
+            --color-dark: #1a1a1a;         /* Gris oscuro */
+            --color-light: #f5f5f5;        /* Gris claro */
+            --color-text: #333333;
+            --color-border: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: #ffffff;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+    background: linear-gradient(135deg, #aaaaaa 0%, #F5F5F5 100%);
+    color: #424242;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2.7rem;
+            font-weight: bold;
+            color: var(--color-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+    color: #333333;  /* Cambiar de white a gris oscuro */
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="20" r="1.5" fill="white" opacity="0.1"/><circle cx="20" cy="80" r="1.5" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0.5rem;
+            background: white;
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: var(--transition);
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--color-secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+        }
+
+        /* ==================== SECTIONS ==================== */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section.alt {
+            background: var(--color-light);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            border-radius: 2px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== ABOUT ==================== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .about-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-features li::before {
+            content: '✓';
+            color: var(--color-secondary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .about-image {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 10px;
+    min-height: 200px;  /* Cambiar de 300px a menos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    opacity: 0.9;
+}
+.about-image img {
+    width: 300px;  /* Ancho de la imagen */
+    height: 300px; /* Alto de la imagen */
+    object-fit: contain; /* Mantiene la proporción */
+}
+
+
+        /* ==================== SERVICES ==================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            border-color: var(--color-secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .service-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+        /* ==================== CONTACT FORM ==================== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--color-border);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--color-dark), #2a2a2a);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            min-width: 30px;
+        }
+
+        .contact-item p {
+            margin: 0;
+        }
+
+        .contact-item-label {
+            font-weight: 600;
+            color: var(--color-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        /* ==================== LOCATION ==================== */
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 10px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .location-info h3 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-content,
+            .contact-container,
+            .location-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            nav a::after {
+                display: none;
+            }
+
+            nav a:hover {
+                color: var(--color-secondary);
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ==================== UTILITIES ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <nav class="navbar">
+           <a href="#" class="logo">
+    <img src="img/DAF.png" alt="Logo DAF" style="width: 90px; height: 90px; margin-right: 5px;">
+    Grupo DAF
+</a>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Soluciones Globales en Seguridad Tecnológica Grupo DAF, S.A. de C.V. 
+                RFC: SGS210506C16</h1>
+            <p>"En casa nos esperan, por eso la seguridad es primero."</p>
+            <div>
+                <a href="#contact" class="btn">Solicitar Asesoramiento</a>
+                <a href="#services" class="btn btn-secondary">Nuestros Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="section" id="about">
+        <h2>Nuestro Objetivo</h2>
+        <div class="section-description">Con nuestra tecnología innovadora buscamos perfeccionar su seguridad personal y patrimonial.</div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Experiencia y Confianza</h3>
+                <p> Contamos con un equipo de especialistas, ingenieros, programadores y diseñadores  calificados y certificados en cada una de nuestras líneas, trabajando firmemente para llevar a GRUPO DAF a la excelencia en la calidad de nuestros servicios.</p>
+                <p>Seguimos trabajando incansablemente para permanecer como referente tecnológico, ofreciendo soluciones integrales en sistemas de seguridad y protección civil para todo tipo de empresas.</p>
+                
+                <ul class="about-features">
+                    <li>Certificaciones internacionales ISO 27001</li>
+                    <li>Personal altamente capacitado y de confianza</li>
+                    <li>Soluciones personalizadas para tu empresa</li>
+                    <li>Disponibilidad 24/7</li>
+                </ul>
+            </div>
+            <div class="about-image">
+    <img src="img/DAF.png" alt="Escudo de seguridad">
+</div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section class="section alt" id="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="section-description">Venta, instalación y mantenimiento preventivo y correctivo a sistemas:</div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="service-icon"> 🧯</div>
+</div>
+                <h3>Contra incendio</h3>
+                <p>Venta, mantenimiento y recarga de extintores.Certificados en la NOM-154-SCFI-2005</p>
+            <ul class="about-features">
+                    <li>Polvo químico seco</li>
+                    <li>Agentes limpios</li>
+                    <li>Co2</li>
+                </ul>
+ </div>
+            <div class="service-card">
+               <div class="service-icon">
+     <div class="service-icon"> ⛽️</div>
+</div>
+                <h3>Bombeo</h3>
+                <p>"Soluciones completas de sistemas de bombeo para suministro y distribución de agua. Venta, instalación y mantenimiento especializado para garantizar operación continua."</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚷</div>
+                <h3>Control de acceso</h3>
+                <p>"Sistemas biométricos y electrónicos de control de acceso. Gestión de permisos, registro de asistencia y seguridad de instalaciones con tecnología de punta."</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚨</div>
+                <h3>Arcos detectores de metal</h3>
+                <p>"Equipos de detección de objetos metálicos de alta precisión. Soluciones para seguridad en accesos, eventos y áreas restringidas con calibración profesional."</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📹</div>
+                <h3>Videovigilancia</h3>
+                <p>"Sistemas CCTV profesionales con grabación en nube, monitoreo 24/7 y análisis inteligente. Instalación, mantenimiento preventivo y soporte técnico continuo."</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🩻</div>
+                <h3>Maquina de rayos X</h3>
+                <p> "Equipos de inspección por rayos X para análisis no destructivo. Instalación, capacitación y mantenimiento técnico especializado con estándares de seguridad radiológica."</p>
+            </div>
+        <div class="service-card">
+                <div class="service-icon">🥽</div>
+                <h3>Equipo de protección personal y protección civil</h3>
+                <p>"Equipos de protección personal certificados y soluciones en protección civil. Venta, capacitación y asesoramiento para garantizar la seguridad de tu personal."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section" id="contact">
+        <h2>Consultorias</h2>
+        <div class="section-description">• Protección civil.</div>
+        <div class="section-description">• Capacitación básica y avanzada en el uso de los sistemas instalados.</div>
+        <div class="section-description">• Prevención de incendios, brigadas y primeros auxilios, avalados por fabricantes  
+y asociaciones nacionales e internacionales. </div>
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div>
+                        <p class="contact-item-label">Teléfono</p>
+                        <p>5573539728 - 5573539809</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <div>
+                        <p class="contact-item-label">Email</p>
+                        <p>ventas@solucionesdaf.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div>
+                        <p class="contact-item-label">Ubicación</p>
+                        <p>Venustiano Carranza 82A Col. Providencia Azcapotzalco CDMX C.P. 02440 </p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">🕐</div>
+                    <div>
+                        <p class="contact-item-label">Disponibilidad</p>
+                        <p>24/7 Servicio continuo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Soluciones DAF</h4>
+                <p>"En casa nos esperan, por eso la seguridad es primero."</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#services">Contra incendios</a></li>
+                    <li><a href="#services">Bombeo</a></li>
+                    <li><a href="#services">Control de accesos</a></li>
+                    <li><a href="#services">Arcos detectores de metal</a></li>
+                    <li><a href="#services">Videovigilancia</a></li>
+                    <li><a href="#services">Maquina de rayos X</a></li>
+                    <li><a href="#services">Equipo de protección personal y protección civil</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Compañía</h4>
+                <ul>
+                    <li><a href="#about">Nuestro Objetivo</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Consultorias</a></li>
+                    <li><a href="#">Políticas</a></li>
+                </ul>
+            </div>
+
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Soluciones Globales en Seguridad Tecnológica Grupo DAF. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`¡Gracias ${name}! Nos pondremos en contacto pronto.`);
+            event.target.reset();
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
