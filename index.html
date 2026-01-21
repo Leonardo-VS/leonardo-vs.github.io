@@ -1,4 +1,3 @@
-nano index.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,16 +10,20 @@ nano index.html
             padding: 0;
             box-sizing: border-box;
         }
+       :root {
+    --color-primary: #1F3E5A;      /* Azul marino (principal) */
+    --color-secondary: #F28C28;    /* Naranja (CTA/acento) */
+    --color-accent: #C0392B;       /* Rojo (acento secundario) */
 
-        :root {
-            --color-primary: #D32F2F;      /* Rojo corporativo */
-            --color-secondary: #FF6F00;    /* Naranja corporativo */
-            --color-dark: #1a1a1a;         /* Gris oscuro */
-            --color-light: #f5f5f5;        /* Gris claro */
-            --color-text: #333333;
-            --color-border: #e0e0e0;
-            --transition: all 0.3s ease;
-        }
+    --color-dark: #0F2436;         /* Azul más oscuro para header/footer */
+    --color-light: #f5f5f5;
+    --color-text: #333333;
+    --color-border: #e0e0e0;
+    --transition: all 0.3s ease;
+}
+
+
+
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -31,7 +34,7 @@ nano index.html
 
         /* ==================== HEADER ==================== */
         header {
-    background: linear-gradient(135deg, #aaaaaa 0%, #F5F5F5 100%);
+    background: linear-gradient(135deg, #576876 0%, #1F3E5A 100%);
     color: #424242;
     padding: 1rem 0;
     position: sticky;
@@ -67,7 +70,7 @@ nano index.html
             flex-wrap: wrap;
         }
         nav a {
-    color: #333333;  /* Cambiar de white a gris oscuro */
+    color: #ffffff;  /* Cambiar de white a gris oscuro */
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
@@ -92,7 +95,12 @@ nano index.html
 
         /* ==================== HERO SECTION ==================== */
         .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+}
+
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
             color: white;
             padding: 6rem 2rem;
             text-align: center;
@@ -119,11 +127,14 @@ nano index.html
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
 
         .hero p {
             font-size: 1.3rem;
@@ -135,27 +146,27 @@ nano index.html
             display: inline-block;
             padding: 12px 30px;
             margin: 0.5rem;
-            background: white;
+            background: rgb(255, 255, 255);
             color: var(--color-primary);
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: var(--transition);
-            border: 2px solid white;
+            border: 2px solid rgb(255, 255, 255);
             cursor: pointer;
             font-size: 1rem;
         }
 
         .btn:hover {
             background: var(--color-secondary);
-            color: white;
+            color: rgb(255, 255, 255);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary {
             background: var(--color-secondary);
-            color: white;
+            color: rgb(255, 255, 255);
         }
 
         .btn-secondary:hover {
@@ -190,7 +201,7 @@ nano index.html
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent));
             border-radius: 2px;
         }
 
@@ -213,7 +224,7 @@ nano index.html
         }
 
         .about-text h3 {
-            color: var(--color-primary);
+            color: var(--color-secondary);
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
@@ -231,7 +242,7 @@ nano index.html
 
         .about-features li {
             padding: 0.5rem 0;
-            color: #555;
+            color: #888888;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -245,7 +256,7 @@ nano index.html
         }
 
         .about-image {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(135deg, var(--color-border), var(--color-border));
     border-radius: 10px;
     min-height: 200px;  /* Cambiar de 300px a menos */
     display: flex;
@@ -259,7 +270,42 @@ nano index.html
     height: 300px; /* Alto de la imagen */
     object-fit: contain; /* Mantiene la proporción */
 }
+ /* ==================== MISSION & VISION ==================== */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
 
+        .mv-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .mv-card:hover {
+            border-color: var(--color-secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+            transform: translateY(-3px);
+        }
+
+        .mv-card h3 {
+            color: var(--color-secondary);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .mv-card p {
+            color: #666;
+            line-height: 1.8;
+            margin: 0;
+        }
 
         /* ==================== SERVICES ==================== */
         .services-grid {
@@ -288,7 +334,7 @@ nano index.html
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary));
             transform: scaleX(0);
             transform-origin: left;
             transition: var(--transition);
@@ -324,6 +370,53 @@ nano index.html
     height: 80px;
     object-fit: contain;
 }
+        /* ==================== CLIENTS ==================== */
+        .clients-grid {
+            display: grid;
+            grid-template-columns:  repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .client-item {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .client-item:hover {
+            border-color: var(--color-secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+            transform: translateY(-3px);
+        }
+
+        .client-logo {
+            width: 100%;
+            max-width: 140px;
+            height: 70px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.75;
+            transition: var(--transition);
+        }
+
+        .client-item:hover .client-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .client-name {
+            margin-top: 0.8rem;
+            color: #666;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+
 
         /* ==================== CONTACT FORM ==================== */
         .contact-container {
@@ -591,12 +684,13 @@ nano index.html
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <h1>Soluciones Globales en Seguridad Tecnológica Grupo DAF, S.A. de C.V. 
-                RFC: SGS210506C16</h1>
+            <h1>Soluciones Globales en Seguridad Tecnológica Grupo DAF </h1>
+             <p>  RFC: SGS210506C16 </p>
             <p>"En casa nos esperan, por eso la seguridad es primero."</p>
             <div>
                 <a href="#contact" class="btn">Solicitar Asesoramiento</a>
-                <a href="#services" class="btn btn-secondary">Nuestros Servicios</a>
+                <a href="#services" class="btn">Nuestros Servicios</a>
+                <a href="#clients" class="btn">Principales clientes</a>
             </div>
         </div>
     </section>
@@ -609,7 +703,8 @@ nano index.html
         <div class="about-content">
             <div class="about-text">
                 <h3>Experiencia y Confianza</h3>
-                <p> Contamos con un equipo de especialistas, ingenieros, programadores y diseñadores  calificados y certificados en cada una de nuestras líneas, trabajando firmemente para llevar a GRUPO DAF a la excelencia en la calidad de nuestros servicios.</p>
+                <p>Somos una empresa fundada con el objetivo de brindar la mejor calidad de integración en tecnologías para su seguridad personal y patrimonial, cubriendo las necesidades de nuestros clientes.</p>
+                <p>Con más de 15 años de experiencia tenemos un equipo de especialistas en cada una de nuestras ramas para brindar servicios de valor mediante métodos y servicios eficientes.</p>
                 <p>Seguimos trabajando incansablemente para permanecer como referente tecnológico, ofreciendo soluciones integrales en sistemas de seguridad y protección civil para todo tipo de empresas.</p>
                 
                 <ul class="about-features">
@@ -624,6 +719,23 @@ nano index.html
 </div>
         </div>
     </section>
+    <!-- ==================== MISSION & VISION SECTION ==================== -->
+    <section class="section" id="mision-vision">
+        <h2>Misión y Visión</h2>
+        <div class="section-description">Comprometidos con la excelencia en seguridad y tecnología</div>
+
+        <div class="mv-grid">
+            <div class="mv-card">
+                <h3>Misión</h3>
+                <p>En Grupo DAF empleamos las tecnologías de punta en el desarrollo de nuestros servicios con el objetivo de la total satisfacción de nuestros clientes.</p>
+            </div>
+
+            <div class="mv-card">
+                <h3> Visión</h3>
+                <p>Nuestro compromiso es brindar la mejor calidad de integración en tecnologías para su seguridad personal y patrimonial.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- ==================== SERVICES SECTION ==================== -->
     <section class="section alt" id="services">
@@ -633,54 +745,150 @@ nano index.html
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">
-                    <div class="service-icon"> 🧯</div>
+                    <div class="service-icon"> 🔥</div>
 </div>
-                <h3>Contra incendio</h3>
-                <p>Venta, mantenimiento y recarga de extintores.Certificados en la NOM-154-SCFI-2005</p>
-            <ul class="about-features">
-                    <li>Polvo químico seco</li>
-                    <li>Agentes limpios</li>
-                    <li>Co2</li>
+                <h3>Sistemas contra incendio</h3>
+                <p>Sistemas convencionales, direccionables e inteligentes de detección y supresión de incendio, así como sistemas de bombeo, rociadores, redes de hidrantes y sistemas de detección temprana, basados en las normas, (NOM y NFPA).</p>
+            <p>Los servicios que proporcionamos en este rubro son:</p>
+                <ul class="about-features">
+                    <li>Sistemas automáticos de rociadores</li>
+                    <li>Sistemas automáticos de diluvio</li>
+                    <li>Sistemas automáticos inteligentes para detección de humo y temperatura</li>
+                    <li>Sistemas automáticos de supresión de fuego a base de agente limpio</li>
+                    <li>Sistemas automáticos para supresión de fuego a base de bióxido de carbono CO2</li>
+                    <li>Sistemas automáticos para supresión de fuego a base de espuma</li>
                 </ul>
  </div>
             <div class="service-card">
                <div class="service-icon">
      <div class="service-icon"> ⛽️</div>
 </div>
-                <h3>Bombeo</h3>
-                <p>"Soluciones completas de sistemas de bombeo para suministro y distribución de agua. Venta, instalación y mantenimiento especializado para garantizar operación continua."</p>
+                <h3>Sistemas de bombeo</h3>
+                <p>Desarrollamos e implementamos la ingeniería para instalar tanques de almacenamiento de agua, sistemas hidroneumáticos y sistemas de bombeo tanto de agua de servicio, como red de hidrantes de instalación aparente y subterráneas, rociadores y cárcamo.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🧯</div>
+                <h3>Exintores portátiles</h3>
+                <p>Somos una empresa verificada de acuerdo con la NOM-154-SCFl-2005 para ofrecer el servicio de recarga y/o mantenimiento preventivo/correctivo a extintores. Contamos con distintos agentes en nuestros extintores:</p>
+                <ul class="about-features">
+                <li>Extintores de polvo químico seco tipo ABC</li>
+                <li>Extintores de bióxido de carbono (CO2)</li>
+                <li>Extintores de agua ligera AB</li>
+                <li>Extintores de agua a presión</li>
+                <li>Extintores Cleanguard</li>
+                <li>Extintores con protección tipo K</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🩻</div>
+                <h3>Inspección</h3>
+                <p>Contamos con personal certificado, autorizado a instalar, proporcionar revisiones y mantenimiento de sus arcos detectores de metales y máquinas de Rayos X.</p>
+                <ul class="about-features">
+                    <li>SUMINISTRO, MANTENIMIENTO E INSTALACIÓN DE ARCOS DETECTORES DE METAL Y MÁQUINAS DE RAYOS X.</li>
+                </ul>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">🚷</div>
                 <h3>Control de acceso</h3>
-                <p>"Sistemas biométricos y electrónicos de control de acceso. Gestión de permisos, registro de asistencia y seguridad de instalaciones con tecnología de punta."</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🚨</div>
-                <h3>Arcos detectores de metal</h3>
-                <p>"Equipos de detección de objetos metálicos de alta precisión. Soluciones para seguridad en accesos, eventos y áreas restringidas con calibración profesional."</p>
+                <p>Estamos certificados y capacitados para realizar la instalación, mantenimiento de:</p>
+                <ul class="about-features">
+                    <li>Vehicular (plumas de estacionamientos)</li>
+                    <li>Acceso publico</li>
+                    <li>Torniquetes</li>
+                </ul>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">📹</div>
                 <h3>Videovigilancia</h3>
-                <p>"Sistemas CCTV profesionales con grabación en nube, monitoreo 24/7 y análisis inteligente. Instalación, mantenimiento preventivo y soporte técnico continuo."</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🩻</div>
-                <h3>Maquina de rayos X</h3>
-                <p> "Equipos de inspección por rayos X para análisis no destructivo. Instalación, capacitación y mantenimiento técnico especializado con estándares de seguridad radiológica."</p>
+                <p>Suministro, mantenimiento e instalación de sistemas integrales de video vigilancia.</p>
+                <ul class="about-features">
+                    <li>Cámaras fijas y móviles</li>
+                    <li>Sistema de Monitoreo de video</li>
+                    <li>Video vigilancia IP</li>
+                    <li>Sistemas de almacenamiento</li>
+                    <li>Análisis de video</li>
+                    <li>Sistema de gestión de video</li>
+                    <li>Aplicaciones móviles</li>
+                </ul>
             </div>
         <div class="service-card">
-                <div class="service-icon">🥽</div>
-                <h3>Equipo de protección personal y protección civil</h3>
-                <p>"Equipos de protección personal certificados y soluciones en protección civil. Venta, capacitación y asesoramiento para garantizar la seguridad de tu personal."</p>
+                <div class="service-icon">🔘</div>
+                <h3>Sistemas de radio comunicación</h3>
+                <p>Ofrecemos soluciones de comunicación más confiables con equipos Motorola, lcom y Kenwood, conocidos por sus altos niveles de durabilidad y confiabilidad.</p>
             </div>
+        <div class="service-card">
+            <div class="service-icon">🥽</div>
+            <h3>Equipos de protección civil seguridad industrial y personal</h3>
+            <p>También tenemos disponibles productos para uso personal, entre los cuales están: cascos protectores de distintos tipos, caretas, lentes, orejeras o tapones auditivos, arneses y equipo  de rescate en espacios confinados, equipo de minería de varios tipos, equipo de respiración autónoma, equipo de bombero y equipo de medición de explosividad, vapores orgánicos y oxígeno, chalecos de brigadista, calzado de seguridad, uniformes especiales, botiquines de emergencia, camillas etc.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">⚠️</div>
+            <h3>Señalización</h3>
+            <p>Contamos con la más amplia línea de señalamientos en vinil, PVC, acrílico y estireno para cubrir las necesidades de cualquier inmueble de acuerdo con las normas oficiales vigentes.</p>
         </div>
     </section>
+    <!-- ==================== CLIENTS SECTION ==================== -->
+    <section class="section alt" id="clients">
+        <h2>Principales Clientes</h2>
+        <div class="section-description">Empresas que han confiado en nuestros servicios</div>
+
+        <div class="clients-grid">
+            <div class="client-item">
+                <img class="client-logo" src="./img/SRE.jpg" alt="Cliente 1">
+                <div class="client-name">SECRETARIA DE RELACIONES EXTERIORES</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/BB.png" alt="Cliente 2">
+                <div class="client-name">BANCO DEL BIENESTAR</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/CONA.png" alt="Cliente 3">
+                <div class="client-name">COMISIÓN NACIONAL DEL AGUA</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/GESE.png" alt="Cliente 4">
+                <div class="client-name">SOLUCIONES INTEGRALES GESEHI</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/CHE.jpg" alt="Cliente 5">
+                <div class="client-name">Chedraui</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/INE.jpg" alt="Cliente 6">
+                <div class="client-name">INSTITUTO NACIONAL ELECTORAL</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/ATT.jpg" alt="Cliente 7">
+                <div class="client-name">AT & T</div>
+            </div>
+
+             <div class="client-item">
+                <img class="client-logo" src="./img/MMT.png" alt="Cliente 8">
+                <div class="client-name">MUSEO MEMORIA Y TOLERANCIA</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/SPR.png" alt="Cliente 9">
+                <div class="client-name">SISTEMA PÚBLICO DE RADIO DIFUSIÓN DEL ESTADO MEXICANO</div>
+            </div>
+
+            <div class="client-item">
+                <img class="client-logo" src="./img/IMA.png" alt="Cliente 10">
+                <div class="client-name">INGENIERÍA DE MATERIALES Y ARQUITECTURA</div>
+            </div>
+
+    </section>
+
 
     <!-- ==================== CONTACT SECTION ==================== -->
     <section class="section" id="contact">
@@ -712,7 +920,7 @@ y asociaciones nacionales e internacionales. </div>
                     <div class="contact-item-icon">📍</div>
                     <div>
                         <p class="contact-item-label">Ubicación</p>
-                        <p>Venustiano Carranza 82A Col. Providencia Azcapotzalco CDMX C.P. 02440 </p>
+                        <p>CLL Federico Gamboa 105, Interior 4 P.A. San Juan Tlihuaca, CDMX C.P. 02400 </p>
                     </div>
                 </div>
 
@@ -738,13 +946,15 @@ y asociaciones nacionales e internacionales. </div>
             <div class="footer-section">
                 <h4>Servicios</h4>
                 <ul>
-                    <li><a href="#services">Contra incendios</a></li>
-                    <li><a href="#services">Bombeo</a></li>
-                    <li><a href="#services">Control de accesos</a></li>
-                    <li><a href="#services">Arcos detectores de metal</a></li>
-                    <li><a href="#services">Videovigilancia</a></li>
-                    <li><a href="#services">Maquina de rayos X</a></li>
-                    <li><a href="#services">Equipo de protección personal y protección civil</a></li>
+                    <li><a href="#services">SISTEMAS CONTRA INCENDIO</a></li>
+                    <li><a href="#services">SISTEMAS DE BOMBEO</a></li>
+                    <li><a href="#services">EXTINTORES PORTÁTILES</a></li>
+                    <li><a href="#services">INSPECCIÓN</a></li>
+                    <li><a href="#services">CONTROL DE ACCESO</a></li>
+                    <li><a href="#services">VIDEO VIGILANCIA</a></li>
+                    <li><a href="#services">SISTEMAS DE RADIO COMUNICACIÓN</a></li>
+                    <li><a href="#services">EQUIPOS DE PROTECCION CIVIL SEGURIDAD INDUSTRIAL Y PERSONAL</a></li>
+                    <li><a href="#services">SEÑALIZACIÓN</a></li>
                 </ul>
             </div>
 
@@ -753,6 +963,7 @@ y asociaciones nacionales e internacionales. </div>
                 <ul>
                     <li><a href="#about">Nuestro Objetivo</a></li>
                     <li><a href="#services">Servicios</a></li>
+                    <li><a href="#clients">Principales clientes</a></li>
                     <li><a href="#contact">Consultorias</a></li>
                     <li><a href="#">Políticas</a></li>
                 </ul>
