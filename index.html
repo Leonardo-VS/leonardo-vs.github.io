@@ -415,7 +415,26 @@
             font-weight: 600;
             font-size: 0.95rem;
         }
+        /* Tablet: 3 por fila */
+@media (max-width: 1024px) {
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
+/* Móvil: 2 por fila */
+@media (max-width: 768px) {
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Muy pequeño: 1 por fila */
+@media (max-width: 480px) {
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
         /* ==================== CONTACT FORM ==================== */
