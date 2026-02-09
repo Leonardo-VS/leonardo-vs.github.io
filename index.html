@@ -36,7 +36,7 @@
         header {
     background: linear-gradient(135deg, #576876 0%, #1F3E5A 100%);
     color: #424242;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -46,7 +46,7 @@
         .navbar {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,7 +56,7 @@
         .logo {
             font-size: 2.7rem;
             font-weight: bold;
-            color: var(--color-secondary);
+            color: var(--color-border);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -94,53 +94,55 @@
         }
 
         /* ==================== HERO SECTION ==================== */
-        .hero {
-    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+       .hero {
+  background-image: url('img/hero-bg2.jpg'); /* Agrega tu imagen aquí (sube hero-bg.jpg a img/) */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh; /* Altura completa */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-
-        .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="20" r="1.5" fill="white" opacity="0.1"/><circle cx="20" cy="80" r="1.5" fill="white" opacity="0.1"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.8rem);
-    margin-bottom: 1rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)); /* Difuminado oscuro */
+  z-index: 1;
 }
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
+.hero h1 {
+  font-size: clamp(1.1rem, 3vw, 4.5rem); /* Adaptable y grande */
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.9); /* Resalta letras */
+  margin-bottom: 1.5rem;
+  color: white !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: rgba(255,255,255,0.95) !important;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
 
         .btn {
             display: inline-block;
@@ -438,81 +440,136 @@
 
 
         /* ==================== CONTACT FORM ==================== */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
+        /* Contenedor del formulario: centrado y con sombra suave */
+.contact-form {
+    max-width: 600px;         /* Ancho máximo ideal para lectura */
+    margin: 3rem auto;        /* Centrado horizontal y separado de arriba/abajo */
+    background: #ffffff;      /* Fondo blanco limpio */
+    padding: 2.5rem;          /* Espacio interno */
+    border-radius: 12px;      /* Bordes redondeados modernos */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+    border: 1px solid #eee;   /* Borde sutil */
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+/* Estilo de las etiquetas (Nombre, Correo...) */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-dark); /* Tu azul corporativo */
+    font-size: 0.95rem;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-dark);
-            font-weight: 600;
-        }
+/* Estilo de los campos (inputs y textarea) */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;     /* Más espacio interno para escribir */
+    border: 2px solid #e0e0e0;/* Borde gris claro inicial */
+    border-radius: 8px;       /* Bordes redondeados */
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    transition: all 0.3s ease;
+}
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--color-border);
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
+/* Efecto cuando escribes (Focus) */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary); /* Se pone naranja/azul al escribir */
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(242, 140, 40, 0.15); /* Resplandor suave */
+}
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
-        }
+/* Botón de enviar más llamativo */
+.contact-form button[type="submit"] {
+    width: 100%;              /* Botón ancho completo */
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    background: var(--color-secondary); /* Tu color naranja/principal */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+.contact-form button[type="submit"]:hover {
+    transform: translateY(-2px); /* Se levanta un poco */
+    box-shadow: 0 5px 15px rgba(242, 140, 40, 0.3); /* Sombra al pasar mouse */
 
-        .contact-info {
-            background: linear-gradient(135deg, var(--color-dark), #2a2a2a);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-        }
+}
+/* Contenedor principal de la info */
+.contact-info-card {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+    height: 100%; /* Para que mida lo mismo que el formulario si están lado a lado */
+}
 
-        .contact-info h3 {
-            color: var(--color-secondary);
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
+.contact-info-card h3 {
+    color: var(--color-primary); /* Tu azul */
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-secondary); /* Línea naranja abajo */
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
 
-        .contact-item {
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-        }
+/* Cada ítem (Teléfono, Email...) */
+.info-item {
+    display: flex;
+    align-items: flex-start; /* Alineado arriba por si el texto es largo */
+    margin-bottom: 1.8rem;
+    gap: 1rem;
+}
 
-        .contact-item-icon {
-            font-size: 1.5rem;
-            color: var(--color-secondary);
-            min-width: 30px;
-        }
+/* El icono (redondo y con color) */
+.info-icon {
+    background-color: rgba(31, 62, 90, 0.1); /* Azul muy clarito de fondo */
+    color: var(--color-primary); /* Icono azul */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    flex-shrink: 0; /* Que no se aplaste */
+}
 
-        .contact-item p {
-            margin: 0;
-        }
+/* Títulos (Teléfono, Email) */
+.info-content h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    font-weight: 700;
+}
 
-        .contact-item-label {
-            font-weight: 600;
-            color: var(--color-secondary);
-            margin-bottom: 0.3rem;
-        }
+/* Texto normal (números, dirección) */
+.info-content p {
+    margin: 0.3rem 0 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Links (para que al dar clic llamen o manden correo) */
+.info-content a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.info-content a:hover {
+    color: var(--color-secondary); /* Naranja al pasar mouse */
+}
+
 
         /* ==================== LOCATION ==================== */
         .location-container {
@@ -688,7 +745,7 @@
     <header>
         <nav class="navbar">
            <a href="#" class="logo">
-    <img src="img/DAF.png" alt="Logo DAF" style="width: 90px; height: 90px; margin-right: 5px;">
+    <img src="img/FADB-removebg-preview.png" alt="Logo DAF" style="width: 90px; height: 90px; margin-right: 1px;">
     Grupo DAF
 </a>
             <ul>
@@ -705,7 +762,7 @@
         <div class="hero-content">
             <h1>Soluciones Globales en Seguridad Tecnológica Grupo DAF </h1>
              <p>  RFC: SGS210506C16 </p>
-            <p>"En casa nos esperan, por eso la seguridad es primero."</p>
+            <p>“Cuando todo importa, la seguridad es esencial.”</p>
             <div>
                 <a href="#contact" class="btn">Solicitar Asesoramiento</a>
                 <a href="#services" class="btn">Nuestros Servicios</a>
@@ -764,7 +821,7 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">
-                    <div class="service-icon"> 🔥</div>
+                     <div class="service-icon"> 🔥</div>
 </div>
                 <h3>Sistemas contra incendio</h3>
                 <p>Sistemas convencionales, direccionables e inteligentes de detección y supresión de incendio, así como sistemas de bombeo, rociadores, redes de hidrantes y sistemas de detección temprana, basados en las normas, (NOM y NFPA).</p>
@@ -801,7 +858,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-icon">🩻</div>
+                <div class="service-icon">⚠️</div>
                 <h3>Inspección</h3>
                 <p>Contamos con personal certificado, autorizado a instalar, proporcionar revisiones y mantenimiento de sus arcos detectores de metales y máquinas de Rayos X.</p>
                 <ul class="about-features">
@@ -845,7 +902,7 @@
             <p>También tenemos disponibles productos para uso personal, entre los cuales están: cascos protectores de distintos tipos, caretas, lentes, orejeras o tapones auditivos, arneses y equipo  de rescate en espacios confinados, equipo de minería de varios tipos, equipo de respiración autónoma, equipo de bombero y equipo de medición de explosividad, vapores orgánicos y oxígeno, chalecos de brigadista, calzado de seguridad, uniformes especiales, botiquines de emergencia, camillas etc.</p>
         </div>
         <div class="service-card">
-            <div class="service-icon">⚠️</div>
+            <div class="service-icon">🚭</div>
             <h3>Señalización</h3>
             <p>Contamos con la más amplia línea de señalamientos en vinil, PVC, acrílico y estireno para cubrir las necesidades de cualquier inmueble de acuerdo con las normas oficiales vigentes.</p>
         </div>
@@ -910,47 +967,87 @@
 
 
     <!-- ==================== CONTACT SECTION ==================== -->
+     
     <section class="section" id="contact">
         <h2>Consultorias</h2>
         <div class="section-description">• Protección civil.</div>
         <div class="section-description">• Capacitación básica y avanzada en el uso de los sistemas instalados.</div>
         <div class="section-description">• Prevención de incendios, brigadas y primeros auxilios, avalados por fabricantes  
 y asociaciones nacionales e internacionales. </div>
-            <div class="contact-info">
-                <h3>Información de Contacto</h3>
-                
-                <div class="contact-item">
-                    <div class="contact-item-icon">📞</div>
-                    <div>
-                        <p class="contact-item-label">Teléfono</p>
-                        <p>5573539728 - 5573539809</p>
-                    </div>
-                </div>
+<!-- Formulario de contacto -->
+<form action="https://formspree.io/f/xykdzlwq" method="POST" class="contact-form">
+    
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+    </div>
 
-                <div class="contact-item">
-                    <div class="contact-item-icon">📧</div>
-                    <div>
-                        <p class="contact-item-label">Email</p>
-                        <p>ventas@solucionesdaf.com</p>
-                    </div>
-                </div>
+    <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+    </div>
 
-                <div class="contact-item">
-                    <div class="contact-item-icon">📍</div>
-                    <div>
-                        <p class="contact-item-label">Ubicación</p>
-                        <p>CLL Federico Gamboa 105, Interior 4 P.A. San Juan Tlihuaca, CDMX C.P. 02400 </p>
-                    </div>
-                </div>
+    <div class="form-group">
+        <label for="nombre">Telefono</label>
+        <input type="number" id="telefono" name="Telefono" required placeholder="Tu telefono">
+    </div>
 
-                <div class="contact-item">
-                    <div class="contact-item-icon">🕐</div>
-                    <div>
-                        <p class="contact-item-label">Disponibilidad</p>
-                        <p>24/7 Servicio continuo</p>
-                    </div>
-                </div>
-            </div>
+    <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required placeholder="¿En qué podemos ayudarte?"></textarea>
+    </div>
+    <!-- Redirigir después de enviar (opcional, crea una página gracias.html si quieres) -->
+    <!-- <input type="hidden" name="_next" value="https://leonardo-vs.github.io/gracias.html"> -->
+
+    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+</form>
+<div class="contact-info-card">
+    <h3>Información de Contacto</h3>
+    
+    <!-- Teléfono -->
+    <div class="info-item">
+        <div class="info-icon">📞</div> <!-- O usa <i class="fas fa-phone-alt"></i> -->
+        <div class="info-content">
+            <h4>Teléfono</h4>
+            <p>
+                <a href="tel:+525573539728">55 7353 9728</a> <br>
+                <a href="tel:+525573539809">55 7353 9809</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="info-item">
+        <div class="info-icon">✉️</div> <!-- O usa <i class="fas fa-envelope"></i> -->
+        <div class="info-content">
+            <h4>Email</h4>
+            <p><a href="mailto:ventas@solucionesdaf.com">ventas@solucionesdaf.com</a></p>
+        </div>
+    </div>
+
+    <!-- Ubicación -->
+    <div class="info-item">
+        <div class="info-icon">📍</div> <!-- O usa <i class="fas fa-map-marker-alt"></i> -->
+        <div class="info-content">
+            <h4>Ubicación</h4>
+            <p>
+                Calle Federico Gamboa 105, Interior 4 P.A.<br>
+                San Juan Tlihuaca, CDMX C.P. 02400
+            </p>
+        </div>
+    </div>
+
+    <!-- Disponibilidad -->
+    <div class="info-item">
+        <div class="info-icon">🕒</div> <!-- O usa <i class="fas fa-clock"></i> -->
+        <div class="info-content">
+            <h4>Disponibilidad</h4>
+            <p>24/7 Servicio continuo</p>
+        </div>
+    </div>
+</div>
+
+          
         </div>
     </section>
 
@@ -959,7 +1056,7 @@ y asociaciones nacionales e internacionales. </div>
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Soluciones DAF</h4>
-                <p>"En casa nos esperan, por eso la seguridad es primero."</p>
+                <p>“Cuando todo importa, la seguridad es esencial.”</p>  
             </div>
 
             <div class="footer-section">
@@ -994,24 +1091,5 @@ y asociaciones nacionales e internacionales. </div>
         </div>
     </footer>
 
-    <script>
-        function handleSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            alert(`¡Gracias ${name}! Nos pondremos en contacto pronto.`);
-            event.target.reset();
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
